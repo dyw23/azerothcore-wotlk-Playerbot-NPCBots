@@ -20,7 +20,9 @@
 
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
+void AddSC_DD_UnbindScrollItemScript();
 void AddCustomScripts()
 {
     // MyExampleScript()
+	AddSC_DD_UnbindScrollItemScript();
 }
