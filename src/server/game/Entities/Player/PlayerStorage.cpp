@@ -76,6 +76,10 @@
 //  see: https://github.com/azerothcore/azerothcore-wotlk/issues/9766
 #include "GridNotifiersImpl.h"
 
+//npcbot
+#include "botdatamgr.h"
+//end npcbot
+
 /*********************************************************/
 /***                    STORAGE SYSTEM                 ***/
 /*********************************************************/
@@ -5955,7 +5959,7 @@ void Player::_LoadInventory(PreparedQueryResult result, uint32 timeDiff)
         {
             std::string subject = GetSession()->GetAcoreString(LANG_NOT_EQUIPPED_ITEM);
 
-            MailDraft draft(subject, "There were problems with equipping item(s).");
+            MailDraft draft(subject, "装备物品有问题。");
             for (uint8 i = 0; !problematicItems.empty() && i < MAX_MAIL_ITEMS; ++i)
             {
                 draft.AddItem(problematicItems.front());
@@ -7120,6 +7124,10 @@ void Player::SaveToDB(CharacterDatabaseTransaction trans, bool create, bool logo
     // save pet (hunter pet level and experience and all type pets health/mana).
     if (Pet* pet = GetPet())
         pet->SavePetToDB(PET_SAVE_AS_CURRENT);
+
+    //npcbot: save stored items
+    BotDataMgr::SaveNpcBotStoredGear(GetGUID(), trans);
+    //end npcbot
 }
 
 // fast save function for item/money cheating preventing - save only inventory and money state

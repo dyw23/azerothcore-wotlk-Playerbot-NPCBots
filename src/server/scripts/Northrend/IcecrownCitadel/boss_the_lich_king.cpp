@@ -1592,6 +1592,24 @@ public:
                     if (Creature* terenas = me->FindNearestCreature(NPC_TERENAS_MENETHIL_OUTRO, 50.0f))
                     {
                         terenas->AI()->Talk(SAY_TERENAS_OUTRO_2);
+
+						/*//巫妖王提前死亡,则这里移除不能复活的光环
+                        if (Creature* theLichKing = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_THE_LICH_KING)))
+                        {
+                            if (!theLichKing->IsAlive())
+                            {
+                                Map::PlayerList const& players = _instance->instance->GetPlayers();
+                                for (Map::PlayerList::const_iterator itr = players.begin(); itr != players.end(); ++itr)
+                                {
+                                    if (Player* player = itr->GetSource())
+                                    {
+                                        if (player->HasAura(SPELL_FURY_OF_FROSTMOURNE_NO_REZ))
+                                            player->RemoveAura(SPELL_FURY_OF_FROSTMOURNE_NO_REZ);
+                                    }
+                                }
+                            }
+                        }*/
+
                         terenas->CastSpell((Unit*)nullptr, SPELL_MASS_RESURRECTION, false);
                         if (Creature* lichKing = ObjectAccessor::GetCreature(*me, _instance->GetGuidData(DATA_THE_LICH_KING)))
                         {
@@ -1634,6 +1652,13 @@ public:
                     break;
                 case EVENT_OUTRO_FORDRING_JUMP:
                     me->CastSpell((Unit*)nullptr, SPELL_JUMP, false);
+					/*if (Creature* theLichKing = ObjectAccessor::GetCreature(*me, _instance->GetData64(DATA_THE_LICH_KING)))
+                        //巫妖王提前死亡,则这里继续执行事件
+                        if (!theLichKing->IsAlive())
+                        {
+                            _events.ScheduleEvent(EVENT_OUTRO_LK_TALK_6, 2500);
+                            _events.ScheduleEvent(EVENT_OUTRO_SOUL_BARRAGE, 6500);
+                        }*/
                     break;
 
                 default:
@@ -2677,6 +2702,9 @@ class spell_the_lich_king_valkyr_target_search : public SpellScript
             targets.clear();
             return;
         }
+            //npcbot
+            targets.remove_if(Acore::ObjectTypeIdCheck(TYPEID_PLAYER, false));
+            //end npcbot
         targets.remove_if(Acore::UnitAuraCheck(true, GetSpellInfo()->Id));
         targets.remove_if(Acore::UnitAuraCheck(true, SPELL_BOSS_HITTIN_YA_AURA)); // done in dbc, but just to be sure xd
         targets.remove_if(Acore::UnitAuraCheck(true, SPELL_HARVEST_SOUL_VALKYR));

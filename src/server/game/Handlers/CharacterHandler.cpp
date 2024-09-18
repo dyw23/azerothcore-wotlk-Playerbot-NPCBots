@@ -2154,28 +2154,28 @@ void WorldSession::HandleCharFactionOrRaceChangeCallback(std::shared_ptr<Charact
 
             switch (factionChangeInfo->Race)
             {
-            case RACE_DWARF:
+            case RACE_DWARF://矮人语
                 stmt->SetData(1, 111);
                 break;
-            case RACE_DRAENEI:
+            case RACE_DRAENEI://德莱尼语
                 stmt->SetData(1, 759);
                 break;
-            case RACE_GNOME:
+            case RACE_GNOME://侏儒语
                 stmt->SetData(1, 313);
                 break;
-            case RACE_NIGHTELF:
+            case RACE_NIGHTELF://达纳苏斯语
                 stmt->SetData(1, 113);
                 break;
-            case RACE_UNDEAD_PLAYER:
+            case RACE_UNDEAD_PLAYER://亡灵语
                 stmt->SetData(1, 673);
                 break;
-            case RACE_TAUREN:
+            case RACE_TAUREN://牛头语
                 stmt->SetData(1, 115);
                 break;
-            case RACE_TROLL:
+            case RACE_TROLL://巨魔语
                 stmt->SetData(1, 315);
                 break;
-            case RACE_BLOODELF:
+            case RACE_BLOODELF://萨拉斯语 血精灵
                 stmt->SetData(1, 137);
                 break;
             }

@@ -68,17 +68,17 @@ enum Gender
 enum Races
 {
     RACE_NONE               = 0,  // SKIP
-    RACE_HUMAN              = 1,  // TITLE Human
-    RACE_ORC                = 2,  // TITLE Orc
-    RACE_DWARF              = 3,  // TITLE Dwarf
-    RACE_NIGHTELF           = 4,  // TITLE Night Elf
-    RACE_UNDEAD_PLAYER      = 5,  // TITLE Undead
-    RACE_TAUREN             = 6,  // TITLE Tauren
-    RACE_GNOME              = 7,  // TITLE Gnome
-    RACE_TROLL              = 8,  // TITLE Troll
-    //RACE_GOBLIN             = 9,
-    RACE_BLOODELF           = 10, // TITLE Blood Elf
-    RACE_DRAENEI            = 11 //, TITLE Draenei
+    RACE_HUMAN              = 1,  // TITLE Human人类
+    RACE_ORC                = 2,  // TITLE Orc兽人
+    RACE_DWARF              = 3,  // TITLE Dwarf矮人
+    RACE_NIGHTELF           = 4,  // TITLE Night Elf暗夜精灵
+    RACE_UNDEAD_PLAYER      = 5,  // TITLE Undead亡灵
+    RACE_TAUREN             = 6,  // TITLE Tauren牛头
+    RACE_GNOME              = 7,  // TITLE Gnome侏儒
+    RACE_TROLL              = 8,  // TITLE Troll巨魔
+    //RACE_GOBLIN             = 9,// TITLE Goblin地精
+    RACE_BLOODELF           = 10, // TITLE Blood Elf血精灵
+    RACE_DRAENEI            = 11 //, TITLE Draenei德莱尼
     //RACE_FEL_ORC        = 12,
     //RACE_NAGA           = 13,
     //RACE_BROKEN         = 14,
@@ -138,17 +138,17 @@ enum class DisplayRace : uint8
 enum Classes
 {
     CLASS_NONE          = 0, // SKIP
-    CLASS_WARRIOR       = 1, // TITLE Warrior
-    CLASS_PALADIN       = 2, // TITLE Paladin
-    CLASS_HUNTER        = 3, // TITLE Hunter
-    CLASS_ROGUE         = 4, // TITLE Rogue
-    CLASS_PRIEST        = 5, // TITLE Priest
-    CLASS_DEATH_KNIGHT  = 6, // TITLE Death Knight
-    CLASS_SHAMAN        = 7, // TITLE Shaman
-    CLASS_MAGE          = 8, // TITLE Mage
-    CLASS_WARLOCK       = 9, // TITLE Warlock
+    CLASS_WARRIOR       = 1, // TITLE Warrior战士
+    CLASS_PALADIN       = 2, // TITLE Paladin圣骑士
+    CLASS_HUNTER        = 3, // TITLE Hunter猎人
+    CLASS_ROGUE         = 4, // TITLE Rogue盗贼
+    CLASS_PRIEST        = 5, // TITLE Priest牧师
+    CLASS_DEATH_KNIGHT  = 6, // TITLE Death Knight死骑
+    CLASS_SHAMAN        = 7, // TITLE Shaman萨满
+    CLASS_MAGE          = 8, // TITLE Mage法师
+    CLASS_WARLOCK       = 9, // TITLE Warlock术士
     //CLASS_UNK           = 10,
-    CLASS_DRUID         = 11 // TITLE Druid
+    CLASS_DRUID         = 11 // TITLE Druid德鲁伊
 };
 
 // max+1 for player class
@@ -169,7 +169,14 @@ enum UnitClass
     UNIT_CLASS_MAGE                     = 8,
 };
 
+//npcbot
+/*
+//end npcbot
 #define CLASSMASK_ALL_CREATURES ((1<<(UNIT_CLASS_WARRIOR-1)) | (1<<(UNIT_CLASS_PALADIN-1)) | (1<<(UNIT_CLASS_ROGUE-1)) | (1<<(UNIT_CLASS_MAGE-1)))
+//npcbot
+*/
+#define CLASSMASK_ALL_CREATURES CLASSMASK_ALL_PLAYABLE
+//end npcbot
 
 #define CLASSMASK_WAND_USERS ((1<<(CLASS_PRIEST-1))|(1<<(CLASS_MAGE-1))|(1<<(CLASS_WARLOCK-1)))
 
@@ -3305,6 +3312,22 @@ enum SummonType
     SUMMON_TYPE_LIGHTWELL   = 11,
     SUMMON_TYPE_JEEVES      = 12
 };
+
+enum SummonSlot
+{
+    SUMMON_SLOT_PET                 = 0,
+    SUMMON_SLOT_TOTEM_FIRE          = 1,
+    SUMMON_SLOT_TOTEM_EARTH         = 2,
+    SUMMON_SLOT_TOTEM_WATER         = 3,
+    SUMMON_SLOT_TOTEM_AIR           = 4,
+    SUMMON_SLOT_MINIPET             = 5,
+    SUMMON_SLOT_QUEST               = 6,
+
+    MAX_SUMMON_SLOT
+};
+
+#define MAX_TOTEM_SLOT      5
+#define MAX_GAMEOBJECT_SLOT 4
 
 enum EventId
 {

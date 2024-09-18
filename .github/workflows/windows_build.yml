@@ -1,7 +1,10 @@
 name: windows-build
 on:
   push:
-    branches: [ "Playerbot" ]
+    branches:
+      - 'Playerbot'
+      - 'npcbots_3.3.5'
+      - 'CI'
   pull_request:
     branches: [ "Playerbot" ]
 

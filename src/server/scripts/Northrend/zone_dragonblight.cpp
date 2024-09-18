@@ -1654,7 +1654,7 @@ public:
             uint8 id = GetSpeachId();
             std::string const& text = sCreatureTextMgr->GetLocalizedChatString(me->GetEntry(), 0, id, 0, LOCALE_enUS);
             WorldPacket data;
-            ChatHandler::BuildChatPacket(data, CHAT_MSG_MONSTER_WHISPER, LANG_UNIVERSAL, me->GetGUID(), summoner->GetGUID(), text, CHAT_TAG_NONE, "Toalu'u the Mystic");
+            ChatHandler::BuildChatPacket(data, CHAT_MSG_MONSTER_WHISPER, LANG_UNIVERSAL, me->GetGUID(), summoner->GetGUID(), text, CHAT_TAG_NONE, "秘法师图阿鲁");
             summoner->ToPlayer()->SendDirectMessage(&data);
 
             if (id == 1)

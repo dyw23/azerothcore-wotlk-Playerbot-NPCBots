@@ -64,6 +64,10 @@ class PlayerSocial;
 class SpellCastTargets;
 class UpdateMask;
 
+// NpcBot mod
+class BotMgr;
+// end NpcBot mod
+
 typedef std::deque<Mail*> PlayerMails;
 typedef void(*bgZoneRef)(Battleground*, WorldPacket&);
 
@@ -1076,7 +1080,7 @@ public:
     {
         return GetSession()->GetSessionDbLocaleIndex() == LOCALE_esES || GetSession()->GetSessionDbLocaleIndex() == LOCALE_esMX;
     }
-
+	uint32 GetExtraBonusTalentPoints() const { return m_extraBonusTalentCount; }
     bool TeleportTo(uint32 mapid, float x, float y, float z, float orientation, uint32 options = 0, Unit* target = nullptr, bool newInstance = false);
     bool TeleportTo(WorldLocation const& loc, uint32 options = 0, Unit* target = nullptr)
     {
@@ -2602,6 +2606,18 @@ public:
 
     std::string GetDebugInfo() const override;
 
+    /*****************************************************************/
+    /***                        NPCBOT SYSTEM                      ***/
+    /*****************************************************************/
+    BotMgr* GetBotMgr() const { return _botMgr; }
+    bool HaveBot() const;
+    uint8 GetNpcBotsCount() const;
+    void RemoveAllBots(uint8 removetype = 0);
+    void UpdatePhaseForBots();
+    /*****************************************************************/
+    /***                      END NPCBOT SYSTEM                    ***/
+    /*****************************************************************/
+
  protected:
     // Gamemaster whisper whitelist
     WhisperListContainer WhisperList;
@@ -2879,6 +2895,14 @@ public:
     bool m_needZoneUpdate;
 
 private:
+    /*****************************************************************/
+    /***                        NPCBOT SYSTEM                      ***/
+    /*****************************************************************/
+    BotMgr* _botMgr;
+    /*****************************************************************/
+    /***                      END NPCBOT SYSTEM                    ***/
+    /*****************************************************************/
+
     // internal common parts for CanStore/StoreItem functions
     InventoryResult CanStoreItem_InSpecificSlot(uint8 bag, uint8 slot, ItemPosCountVec& dest, ItemTemplate const* pProto, uint32& count, bool swap, Item* pSrcItem) const;
     InventoryResult CanStoreItem_InBag(uint8 bag, ItemPosCountVec& dest, ItemTemplate const* pProto, uint32& count, bool merge, bool non_specialized, Item* pSrcItem, uint8 skip_bag, uint8 skip_slot) const;

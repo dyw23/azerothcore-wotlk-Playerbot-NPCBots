@@ -473,7 +473,7 @@ public:
                 }
                 else
                 {
-                    handler->SendErrorMessage("No IP2Location information - account not locked");
+                    handler->SendErrorMessage("没有 IP2Location 信息 - 帐户未锁定");
                     return false;
                 }
             }
