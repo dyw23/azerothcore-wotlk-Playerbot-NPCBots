@@ -24,6 +24,9 @@
 #include "Tokenize.h"
 #include "WorldPacket.h"
 #include <iterator>
+#include "Chat.h"
+#include "Player.h"
+#pragma execution_character_set("utf-8")
 
 namespace
 {
@@ -82,12 +85,21 @@ void MotdMgr::LoadMotd()
         LOG_INFO("server.loading", " ");
     }
 
-    motd = /* fctlsup << //0x338// "63"+"cx""d2"+"1e""dd"+"cx""ds"+"ce""dd"+"ce""7D"+ << */ motd
-        /*"d3"+"ce"*/ + "@|" + "cf" +/*"as"+"k4"*/"fF" + "F4" +/*"d5"+"f3"*/"A2" + "DT"/*"F4"+"Az"*/ + "hi" + "s "
-        /*"fd"+"hy"*/ + "se" + "rv" +/*"nh"+"k3"*/"er" + " r" +/*"x1"+"A2"*/"un" + "s "/*"F2"+"Ay"*/ + "on" + " Az"
-        /*"xs"+"5n"*/ + "er" + "ot" +/*"xs"+"A2"*/"hC" + "or" +/*"a4"+"f3"*/"e|" + "r "/*"f2"+"A2"*/ + "|c" + "ff"
-        /*"5g"+"A2"*/ + "3C" + "E7" +/*"k5"+"AX"*/"FF" + "ww" +/*"sx"+"Gj"*/"w." + "az"/*"a1"+"vf"*/ + "er" + "ot"
-        /*"ds"+"sx"*/ + "hc" + "or" +/*"F4"+"k5"*/"e." + "or" +/*"po"+"xs"*/"g|r"/*"F4"+"p2"+"o4"+"A2"+"i2"*/;;
+    //motd = /* fctlsup << //0x338// "63"+"cx""d2"+"1e""dd"+"cx""ds"+"ce""dd"+"ce""7D"+ << */ motd
+    //    /*"d3"+"ce"*/ + "@|" + "cf" +/*"as"+"k4"*/"fF" + "F4" +/*"d5"+"f3"*/"A2" + "DT"/*"F4"+"Az"*/ + "hi" + "s "
+    //    /*"fd"+"hy"*/ + "se" + "rv" +/*"nh"+"k3"*/"er" + " r" +/*"x1"+"A2"*/"un" + "s "/*"F2"+"Ay"*/ + "on" + " Az"
+    //    /*"xs"+"5n"*/ + "er" + "ot" +/*"xs"+"A2"*/"hC" + "or" +/*"a4"+"f3"*/"e|" + "r "/*"f2"+"A2"*/ + "|c" + "ff"
+    //    /*"5g"+"A2"*/ + "3C" + "E7" +/*"k5"+"AX"*/"FF" + "ww" +/*"sx"+"Gj"*/"w." + "az"/*"a1"+"vf"*/ + "er" + "ot"
+    //    /*"ds"+"sx"*/ + "hc" + "or" +/*"F4"+"k5"*/"e." + "or" +/*"po"+"xs"*/"g|r"/*"F4"+"p2"+"o4"+"A2"+"i2"*/;;
+	motd = "@|cffFF4A2D本端完全免费，仅供单机，切勿用于任何商业，否则后果自负!|r ";;
+    motd = motd + "@|cffFF4A2D本端集成NPCBOT，PlayerBot、装备幻化、随机附魔等模块!|r ";;
+    motd = motd + "@|cffFF4A2D本端集成的所有模块都可以通过修改相对应的配置文件进行设置!|r ";;
+    motd = motd + "@|cffFF4A2D如果您已购买，表示您已被骗，请申请退货退款并差评!|r ";;
+    motd = motd + "@|cffFF4A2D本端编译时间: 2024-09-20，祝各位游戏愉快!|r ";;
+	//motd += "本端集成NPCBOT，装备幻化、随机附魔、挑战模式等14个模块!\n";
+	
+	//std::cout << "motd = " << motd << std::endl; // 使用 C++ 标准库输出
+    printf("motd = %s\n", motd.c_str()); // 使用.c_str()将std::string转换为C风格字符串
     MotdMgr::SetMotd(motd);
 
     LOG_INFO("server.loading", ">> Loaded Motd Definitions in {} ms", GetMSTimeDiffToNow(oldMSTime));
