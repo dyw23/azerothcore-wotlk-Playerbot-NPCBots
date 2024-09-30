@@ -13830,6 +13830,11 @@ bool Player::canFlyInZone(uint32 mapid, uint32 zone, SpellInfo const* bySpell)
         return false;
     }
 
+    if ((mapid == 0 || mapid == 1) && !HasSpell(89300)) // 89300是复制 寒冷天气飞行技能改的ID
+    {
+		return false;
+    }
+
     // continent checked in SpellInfo::CheckLocation at cast and area update
     uint32 v_map = GetVirtualMapForMapAndZone(mapid, zone);
     if (v_map == 571 && !bySpell->HasAttribute(SPELL_ATTR7_IGNORES_COLD_WEATHER_FLYING_REQUIREMENT))

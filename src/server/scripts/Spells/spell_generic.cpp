@@ -4097,7 +4097,13 @@ public:
             // Triggered spell id dependent on riding skill and zone
             bool canFly = false;
             uint32 map = GetVirtualMapForMapAndZone(target->GetMapId(), target->GetZoneId());
-            if (map == 530 || (map == 571 && target->HasSpell(SPELL_COLD_WEATHER_FLYING)))
+
+			bool hasOldWorldFlying = target->HasSpell(89300);
+
+			if ((map == 1 || map == 0) && hasOldWorldFlying)
+                canFly = true;
+
+            else if (map == 530 || (map == 571 && target->HasSpell(SPELL_COLD_WEATHER_FLYING)))
                 canFly = true;
 
             AreaTableEntry const* area = sAreaTableStore.LookupEntry(target->GetAreaId());
