@@ -2442,6 +2442,8 @@ public:
         ObjectGuid _grabbedPlayer;
         bool didbelow50pct;
         bool dropped;
+        bool grabbed;
+        float _lastSpeed;
         InstanceScript* _instance;
 
         bool IsHeroic() { return me->GetMap()->IsHeroic(); }
@@ -2572,6 +2574,8 @@ public:
             if (me->HasUnitState(UNIT_STATE_CASTING | UNIT_STATE_STUNNED))
                 return;
 
+            HandleSpeedChangeIfNeeded();
+
             switch (_events.ExecuteEvent())
             {
                 case EVENT_GRAB_PLAYER:
@@ -2582,6 +2586,8 @@ public:
                     }
                     break;
                 case EVENT_MOVE_TO_DROP_POS:
+                    grabbed = true;
+                    _lastSpeed = me->GetSpeed(MOVE_WALK);
                     me->AddUnitState(UNIT_STATE_NO_ENVIRONMENT_UPD);
                     me->SetCanFly(false);
                     me->SetDisableGravity(false);
@@ -2620,6 +2626,24 @@ public:
                 default:
                     break;
             }
+        }
+
+        // For some reason, when the Valkyr has a slowdown effect, the speed of PointMovementGenerator
+        // and the speed on the client side differ, which leads to a "teleportation" effect when a stun aura is applied.
+        // Restarting the motion master on speed change ensures the movement is synced between the server and client.
+        void HandleSpeedChangeIfNeeded()
+        {
+            if (!grabbed || dropped)
+                return;
+
+            if (me->GetSpeed(MOVE_WALK) == _lastSpeed)
+                return;
+
+            _lastSpeed = me->GetSpeed(MOVE_WALK);
+            me->GetMotionMaster()->Clear();
+            me->StopMovingOnCurrentPos();
+
+            _events.ScheduleEvent(EVENT_MOVE_TO_DROP_POS, 0);
         }
     };
 

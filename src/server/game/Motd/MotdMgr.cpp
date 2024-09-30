@@ -95,7 +95,7 @@ void MotdMgr::LoadMotd()
     motd = motd + "@|cffFF4A2D本端集成NPCBOT，PlayerBot、装备幻化、随机附魔等模块!|r ";;
     motd = motd + "@|cffFF4A2D本端集成的所有模块都可以通过修改相对应的配置文件进行设置!|r ";;
     motd = motd + "@|cffFF4A2D如果您已购买，表示您已被骗，请申请退货退款并差评!|r ";;
-    motd = motd + "@|cffFF4A2D本端编译时间: 2024-09-20，祝各位游戏愉快!|r ";;
+    motd = motd + "@|cffFF4A2D本端编译时间: 2024-09-30，祝各位游戏愉快!|r ";;
 	//motd += "本端集成NPCBOT，装备幻化、随机附魔、挑战模式等14个模块!\n";
 	
 	//std::cout << "motd = " << motd << std::endl; // 使用 C++ 标准库输出
