@@ -1161,8 +1161,8 @@ void Creature::CalculateMinMaxDamage(WeaponAttackType attType, bool normalized, 
             }
             else
             {
-        minDamage *= 0.5f;
-        maxDamage *= 0.5f;
+                weaponMinDamage = 0.0f;
+                weaponMaxDamage = 0.0f;
             }
         }
         else
