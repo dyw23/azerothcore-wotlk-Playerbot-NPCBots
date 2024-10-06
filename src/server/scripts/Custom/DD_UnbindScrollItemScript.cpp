@@ -43,7 +43,75 @@ public:
         return success;
     }
 };
+
+/*#####
+# 满级卷轴
+#####*/
+
+class MaxLevelItemScript : public ItemScript
+{
+public:
+    MaxLevelItemScript() : ItemScript("MaxLevelItemScript") { }
+
+    bool OnUse(Player* player, Item* item, SpellCastTargets const& /*targets*/)
+    {        
+		uint32 MaxLevel = 80;
+        uint32 CurrentLevel = player->GetLevel();
+        if (CurrentLevel < MaxLevel)
+        {
+            // 在升级成功时消耗物品
+            player->SetLevel(MaxLevel);
+            player->DestroyItemCount(item->GetEntry(), 1, true, true);
+            ChatHandler(player->GetSession()).PSendSysMessage("物品使用成功，你已经升到最高等级80级！");
+        }
+        else
+        {
+            // 在升级失败时不消耗物品
+            ChatHandler(player->GetSession()).PSendSysMessage("你疯了吗？ 你已经满级了，不能再升级了！");
+        }
+		return true;
+    }
+};
+
+/*#####
+# 升级卷轴
+#####*/
+
+class Level_UpItemScript : public ItemScript
+{
+public:
+    Level_UpItemScript() : ItemScript("Level_UpItemScript") { }
+
+    bool OnUse(Player* player, Item* item, SpellCastTargets const& /*targets*/)
+    {        
+		uint32 MaxLevel = 80;
+        uint32 CurrentLevel = player->GetLevel();
+        if (CurrentLevel < MaxLevel)
+        {
+            // 在升级成功时消耗物品
+            player->SetLevel(CurrentLevel + 1);
+            player->DestroyItemCount(item->GetEntry(), 1, true, true);
+            ChatHandler(player->GetSession()).PSendSysMessage("物品使用成功，你的等级提高了1级！");
+        }
+        else
+        {
+            // 在升级失败时不消耗物品
+            ChatHandler(player->GetSession()).PSendSysMessage("你疯了吗？ 你已经满级了，不能再升级了！");
+        }
+		return true;
+    }
+};
 void AddSC_DD_UnbindScrollItemScript()
 {
     new DD_UnbindScrollItemScript();
+}
+
+void AddSC_MaxLevelItemScript()
+{
+    new MaxLevelItemScript();
+}
+
+void AddSC_Level_UpItemScript()
+{
+    new Level_UpItemScript();
 }

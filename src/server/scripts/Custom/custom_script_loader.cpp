@@ -21,8 +21,12 @@
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
 void AddSC_DD_UnbindScrollItemScript();
+void AddSC_MaxLevelItemScript();
+void AddSC_Level_UpItemScript();
 void AddCustomScripts()
 {
     // MyExampleScript()
 	AddSC_DD_UnbindScrollItemScript();
+	AddSC_MaxLevelItemScript();
+	AddSC_Level_UpItemScript();
 }
