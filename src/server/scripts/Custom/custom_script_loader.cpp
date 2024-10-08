@@ -23,10 +23,12 @@
 void AddSC_DD_UnbindScrollItemScript();
 void AddSC_MaxLevelItemScript();
 void AddSC_Level_UpItemScript();
+void AddSC_dalaran_npc_quest();
 void AddCustomScripts()
 {
     // MyExampleScript()
 	AddSC_DD_UnbindScrollItemScript();
 	AddSC_MaxLevelItemScript();
 	AddSC_Level_UpItemScript();
+	AddSC_dalaran_npc_quest();
 }
