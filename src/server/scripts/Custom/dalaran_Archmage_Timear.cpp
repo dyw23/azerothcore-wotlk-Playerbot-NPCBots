@@ -57,6 +57,7 @@ enum ArchmageLandalockImages
 	NPC_THE_BLACK_KNIGHT_IMAGE          = 35461
 };
 
+ // 达拉然日常任务
 class npc_Archmage_Timear : public CreatureScript
 {
 public:
@@ -155,7 +156,6 @@ public:
 };
 
 void AddSC_dalaran_npc_quest()
-{
-    // our
+{   
     new npc_Archmage_Timear();
 }
