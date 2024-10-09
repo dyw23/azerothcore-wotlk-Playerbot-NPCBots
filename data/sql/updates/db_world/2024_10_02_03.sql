@@ -31,10 +31,6 @@ INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13254);
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13255);
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13256);
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 14199);
-INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13240);
-INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13241);
-INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13243);
-INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (31439, 13244);
 
 -- 交任务
 DELETE FROM `creature_questender` WHERE `id` = 31439;
@@ -51,10 +47,6 @@ INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13254);
 INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13255);
 INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13256);
 INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 14199);
-INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13240);
-INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13241);
-INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13243);
-INSERT INTO `creature_questender` (`id`, `quest`) VALUES (31439, 13244);
 
 -- 任务分组
 UPDATE `quest_template_addon` SET `ExclusiveGroup` = 31439, `SpecialFlags` = 1 WHERE `ID` = 13245;
