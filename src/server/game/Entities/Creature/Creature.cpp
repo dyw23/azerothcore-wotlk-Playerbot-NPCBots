@@ -2000,7 +2000,7 @@ bool Creature::IsInvisibleDueToDespawn() const
     if (Unit::IsInvisibleDueToDespawn())
         return true;
 
-    if (IsAlive() || m_corpseRemoveTime > GameTime::GetGameTime().count())
+    if (IsAlive() || isDying() || m_corpseRemoveTime > GameTime::GetGameTime().count())
         return false;
 
     //npcbot
