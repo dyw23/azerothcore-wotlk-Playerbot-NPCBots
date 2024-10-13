@@ -24,6 +24,8 @@ void AddSC_DD_UnbindScrollItemScript();
 void AddSC_MaxLevelItemScript();
 void AddSC_Level_UpItemScript();
 void AddSC_dalaran_npc_quest();
+void AddSCnpc_zy();
+
 void AddCustomScripts()
 {
     // MyExampleScript()
@@ -31,4 +33,5 @@ void AddCustomScripts()
 	AddSC_MaxLevelItemScript();
 	AddSC_Level_UpItemScript();
 	AddSC_dalaran_npc_quest();
+	AddSCnpc_zy();
 }
