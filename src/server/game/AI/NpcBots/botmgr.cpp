@@ -1622,6 +1622,7 @@ void BotMgr::_teleportBot(Creature* bot, Map* newMap, float x, float y, float z,
             if (gr->IsMember(bot->GetGUID()))
                 gr->SendUpdate();
 
+        botai->AbortTeleport();
         TeleportFinishEvent* finishEvent = new TeleportFinishEvent(botai, reset);
         uint64 delay = quick ? urand(500, 1500) : urand(5000, 8000);
         botai->GetEvents()->AddEvent(finishEvent, botai->GetEvents()->CalculateTime(delay));

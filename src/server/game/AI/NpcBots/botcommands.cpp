@@ -4389,7 +4389,7 @@ public:
         {
             if (!master->HaveBot())
             {
-                handler->PSendSysMessage("{} 没有NPCBots!!", master->GetName());
+                handler->PSendSysMessage("{} 没有NPCBots!", master->GetName());
                 handler->SetSentErrorMessage(true);
                 return false;
             }
