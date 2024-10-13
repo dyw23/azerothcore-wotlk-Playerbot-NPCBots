@@ -112,8 +112,6 @@ bool SetClassToNew(Player* player, uint8 newclass)
             newclass,                               // 新职业
             player->GetLevel()                      // 玩家的等级
         );
-		//sCharacterCache->AddCharacterCacheEntry(player->GetGUID(),player->GetName(), player->GetLevel(), player->getGender(), player->getRace(), newclass);
-       // sCharacterCache->CharacterCacheEntry(player->GetGUID(), PLAYER_UPDATE_DATA_CLASS, player->GetName(), player->GetLevel(), player->getGender(), player->getRace(), newclass);
 
         //强制把身上不符合新职业的武器装备卸下 有位置就放 没位置自动发到邮箱里
         for (uint8 i = EQUIPMENT_SLOT_START; i < EQUIPMENT_SLOT_END; ++i)
@@ -246,7 +244,8 @@ bool SetClassToNew(Player* player, uint8 newclass)
                                 return true;
                                 
                         //以下是扣材料
-                        //----
+                        //23162只是个实例
+						//player->DestroyItemCount(23162, 1, true, true);
 
                 }
 
